@@ -75,5 +75,43 @@ chart_2 = (able_chart + disable_chart).add_selection(
     title = 'Percent of disabled people get care compared with the people without disablity'
 ).interactive()
 
-
 st.altair_chart(chart_2, theme=None, use_container_width=True)
+
+source = pd.DataFrame({"category": ['Doctor\'s office with adjustable exam table', 'Others'], "value": [19.1, 81.9], "text": ['19.1%', '81.9%']})
+
+base = alt.Chart(source).encode(
+    theta=alt.Theta("value:Q", stack=True), 
+)
+
+pie = base.mark_arc(outerRadius=120).encode(color=alt.Color("category:N", legend=alt.Legend(
+        orient='none',
+        title = None,
+        legendX=200, legendY=310,
+        direction='horizontal',
+        titleAnchor='middle')),
+                                            opacity=alt.condition(brush, alt.OpacityValue(1), alt.OpacityValue(0.4))
+).add_selection(
+    brush
+).properties(
+    title='Percent of doctors welcoming disabled patients'
+)
+text = base.mark_text(radius=60, size=20).encode(text="text:N")
+
+
+source_2 = pd.DataFrame({"category": ['Doctor\'s office with wheelchair', 'Others'], "value": [11.9, 89.1], "text": ['10.9%', '89.1%']})
+
+base_2 = alt.Chart(source_2).encode(
+    theta=alt.Theta("value:Q", stack=True), 
+)
+
+pie_2 = base_2.mark_arc(outerRadius=120).encode(color=alt.Color("category:N"),
+        opacity=alt.condition(brush, alt.OpacityValue(1), alt.OpacityValue(0.4))
+).add_selection(
+    brush
+).properties(
+    title='Percent of doctors very confident of providing same quality of care'
+)
+text_2 = base_2.mark_text(radius=60, size=20).encode(text="text:N")
+
+chart_3 = ((pie + text) | (pie_2 + text_2))
+st.altair_chart(chart_3, use_container_width=True)
