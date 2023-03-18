@@ -73,6 +73,7 @@ chart_2 = (able_chart + disable_chart).add_selection(
     width=500,
     height=400,
     title = 'Percent of disabled people get care compared with the people without disablity'
-)
+).interactive()
+
 
 st.altair_chart(chart_2, theme=None, use_container_width=True)
