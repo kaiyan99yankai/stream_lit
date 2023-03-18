@@ -2,7 +2,7 @@ import pandas as pd
 import altair as alt
 import streamlit as st
 
-brush = alt.selection_single(on='mouseover')
+brush = alt.selection_single()
 
 source = pd.DataFrame({"category": ['Doctors strongly welcome PWD', 'Others'], "value": [44, 56], "text": ['43.2%', '56.8%']})
 
