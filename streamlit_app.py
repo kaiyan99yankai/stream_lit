@@ -40,5 +40,5 @@ pie_2 = base_2.mark_arc(outerRadius=120).encode(color=alt.Color("category:N"),
 )
 text_2 = base_2.mark_text(radius=60, size=20).encode(text="text:N")
 
-chart_1 = ((pie + text) | (pie_2 + text_2))
+chart_1 = ((pie + text) | (pie_2 + text_2)).interactive()
 st.altair_chart(chart_1, theme=None, use_container_width=True)
