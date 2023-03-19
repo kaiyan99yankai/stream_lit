@@ -93,7 +93,7 @@ pie = base.mark_arc(outerRadius=120).encode(color=alt.Color("category:N", legend
 ).add_selection(
     brush
 ).properties(
-    title='Percent of doctors welcoming disabled patients'
+    title='Percent of doctors\' office with adjustable exam table'
 )
 text = base.mark_text(radius=60, size=20).encode(text="text:N")
 
@@ -109,7 +109,7 @@ pie_2 = base_2.mark_arc(outerRadius=120).encode(color=alt.Color("category:N"),
 ).add_selection(
     brush
 ).properties(
-    title='Percent of doctors very confident of providing same quality of care'
+    title='Percent of doctors\' office with wheelchair'
 )
 text_2 = base_2.mark_text(radius=60, size=20).encode(text="text:N")
 
